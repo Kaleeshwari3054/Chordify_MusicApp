@@ -1,0 +1,97 @@
+/* New Music Director Details Styles */
+
+.page-wrapper {
+    padding: 30px;
+    background-color: #ffffff;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #064e3b;
+  }
+  
+  .director-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e7fbe9;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 128, 0, 0.2);
+    margin-bottom: 40px;
+    border: 2px solid #14532d;
+  }
+  
+  .director-img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #064e3b;
+    box-shadow: 0 4px 15px rgba(0, 128, 0, 0.3);
+    transition: transform 0.3s;
+  }
+  
+  .director-img:hover {
+    transform: scale(1.05);
+  }
+  
+  .director-name {
+    margin-top: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #065f46;
+  }
+  
+  /* .section-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #10b981;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-left: 100px;
+  } */
+  
+  
+  .track-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 60%;
+    margin-left: 100px;
+  }
+  
+  .track-card {
+    display: flex;
+    background-color: #f0fdf4;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 128, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .track-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .track-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid #10b981;
+  }
+  
+  .track-info {
+    margin-left: 20px;
+    flex-grow: 1;
+  }
+  
+  .track-info p {
+    margin: 5px 0;
+    color: #064e3b;
+  }
+  
+  .track-info audio {
+    margin-top: 10px;
+    width: 40%;
+  }
+  
