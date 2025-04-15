@@ -10,11 +10,6 @@ import MusicDirectorDetails from "./MusicDirectorDetails";
 import Signup from "./Signup";
 import Login from "./Login";
 
-{/* <Router>
-  <Routes>
-  </Routes>
-</Router> */}
-
 const App = () => {
   return (
     <Router>
@@ -27,8 +22,10 @@ const App = () => {
         <Route path="/profile" element={<ProfilePage />}>
           <Route path="library" element={<ProfileLibrary />} />
         </Route>
-        {/* <Route path="/music-director/:musicDirectorName" element={<MusicDirectorDetails />} /> */}
-        <Route path="/music-director/:name" element={<MusicDirectorDetails />} />
+        <Route
+          path="/music-director/:name"
+          element={<MusicDirectorDetails />}
+        />
         <Route path="/musicdirector/:id" element={<MusicDirectorDetails />} />
 
         <Route path="/recent-details" element={<RecentDetails />} />
@@ -39,3 +36,86 @@ const App = () => {
 };
 
 export default App;
+
+
+
+
+
+// import React from "react";
+// import { useFormik } from "formik";
+// import * as yup from "yup";
+
+// const validationSchema = yup.object({
+//   name: yup.string().required("Name is required"),
+//   age: yup
+//     .number()
+//     .typeError("Age must be a number")
+//     .positive("Age must be positive")
+//     .integer("Age must be an integer")
+//     .required("Age is required"),
+// });
+
+// function App() {
+//   const formik = useFormik({
+//     initialValues: {
+//       name: "",
+//       age: "",
+//     },
+//     validationSchema: validationSchema,
+//     onSubmit:(values) => {
+//       console.log(values);
+//     },
+//   });
+//   // Store
+// localStorage.setItem("username", "Kaleeshwari");
+// <div>Hiiii</div>
+// // Get
+// const user = localStorage.getItem("username");
+// console.log(user); // Output: Kaleeshwari
+
+// // Remove
+// localStorage.removeItem("username");
+
+//   return (
+
+    
+//     <div style={{ maxWidth: "400px", margin: "50px auto" }}>
+      
+//       <h2>Yup Validation Form</h2>
+//       <form onSubmit={formik.handleSubmit}>
+//         <div>
+          
+//           <label>Name:</label>
+//           <input
+//             type="text"
+//             name="name"
+//             onChange={formik.handleChange}
+//             value={formik.values.name}
+//           />
+//           {formik.errors.name && (
+//             <div style={{ color: "red" }}>{formik.errors.name}</div>
+//           )}
+//         </div>
+
+//         <div>
+//           <label>Age:</label>
+//           <input
+//             type="text"
+//             name="age"
+//             onChange={formik.handleChange}
+//             value={formik.values.age}
+//           />
+//           {formik.errors.age && (
+//             <div style={{ color: "red" }}>{formik.errors.age}</div>
+//           )}
+//         </div>
+
+//         <button type="submit">Submit</button>
+        
+//       </form>
+      
+//     </div>
+    
+//   );
+// }
+// export default App;

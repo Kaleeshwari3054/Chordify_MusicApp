@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { motion } from "framer-motion";
-import "./Auth.css"; // Import styles
+import "./Auth.css";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDM93120Ba-eBBO2sYTWI9htHCOrgkPgN8",
@@ -30,7 +30,7 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       alert("Login successful!");
-      navigate("/ "); // Redirect to dashboard
+      navigate("/ ");
     } catch (error) {
       setError("Invalid email or password");
     }
@@ -56,9 +56,13 @@ const Login = () => {
             required
           />
           {error && <p className="error">{error}</p>}
-          <motion.button whileHover={{ scale: 1.1 }} type="submit">Login</motion.button>
+          <motion.button whileHover={{ scale: 1.1 }} type="submit">
+            Login
+          </motion.button>
         </form>
-        <p>New user? <a href="/signup">Sign up here</a></p>
+        <p>
+          New user? <a href="/signup">Sign up here</a>
+        </p>
       </div>
     </div>
   );

@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { motion } from "framer-motion";
-import "./Auth.css"; // Import styles
+import "./Auth.css";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDM93120Ba-eBBO2sYTWI9htHCOrgkPgN8",
@@ -32,7 +36,11 @@ const Signup = () => {
     setError("");
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
       await updateProfile(user, { displayName: username });
 
@@ -81,7 +89,9 @@ const Signup = () => {
             Sign Up
           </motion.button>
         </form>
-        <p>Already have an account? <a href="/login">Log in here</a></p>
+        <p>
+          Already have an account? <a href="/login">Log in here</a>
+        </p>
       </div>
     </div>
   );

@@ -358,27 +358,11 @@ body {
     height: auto;
   }
   
-  /* .song-image,
-  .movie-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
-  }
-   */
    .image-container {
     position: relative;
     overflow: hidden;
   }
   
-  /* .song-image,
-  .movie-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
-    transition: filter 0.3s ease-in-out;
-  } */
   
   .play-icon {
     position: absolute;
