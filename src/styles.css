@@ -7,7 +7,10 @@ body {
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden; 
-  
+  font-family: 'Roboto', Arial, sans-serif; /* Improved font for better readability */
+  color: #333; /* Consistent text color */
+  line-height: 1.6; /* Added line height for better text spacing */
+  background-color: #f9f9f9; /* Subtle background color for better contrast */
   }
   
   .spotify-ui {
@@ -24,6 +27,15 @@ body {
     padding: 1rem;
     background-color: #1db954;
     color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .header.scrolled {
+    background-color: #14843b; /* Dimmed green color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
   }
   /* Search bar styling */
 .search-container {
@@ -397,15 +409,15 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   }
-  .image-container:hover .play-icon {
+  /* .image-container:hover .play-icon {
     opacity: 1;
     transform: scale(1.1);
-  }
+  } */
   
-  .image-container:hover .song-image,
+  /* .image-container:hover .song-image,
   .image-container:hover .movie-image {
     filter: brightness(85%);
-  }
+  } */
   .artist-page {
     padding: 20px;
     background-color: #f9f9f9;
@@ -475,10 +487,10 @@ body {
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   }
   
-  .artist-image-container:hover .artist-play-icon {
+  /* .artist-image-container:hover .artist-play-icon {
     opacity: 1;
     transform: scale(1.1);
-  }
+  } */
   
   .artist-image-container:hover .artist-image {
     filter: brightness(85%);

@@ -1,147 +1,53 @@
 [
     {
-      "id": 1,
-      "name": "A.R. Rahman",
-      "type": "musicdirector",
-      "image": "https://c.saavncdn.com/artists/A_R_Rahman_500x500.jpg",
-      "songs": [
-        {
-          "id": "ar1",
-          "title": "Chinna Chinna Aasai",
-          "movie": "Roja",
-          "duration": "4:35",
-          "image": "https://c.saavncdn.com/779/Roja-Tamil-1992-20221205151044-500x500.jpg",
-          "songUrl": "https://res.cloudinary.com/dcuto7css/video/upload/v1743267846/chinna-chinna-aasai_7jxgxs.mp3"
-        },
-        {
-          "id": "ar2",
-          "title": "Uyire Uyire",
-          "movie": "Bombay",
-          "duration": "5:15",
-          "image": "https://c.saavncdn.com/592/Bombay-Tamil-1994-20221205151514-500x500.jpg",
-          "songUrl": "https://res.cloudinary.com/dcuto7css/video/upload/v1743267846/uyire-uyire_6jxgxs.mp3"
-        },
-        {
-          "id": "ar3",
-          "title": "Balleilakka",
-          "movie": "Sivaji",
-          "duration": "4:45",
-          "image": "https://c.saavncdn.com/616/Sivaji-The-Boss-Tamil-2007-20221205182856-500x500.jpg",
-          "songUrl": "https://res.cloudinary.com/dcuto7css/video/upload/v1743267846/balleilakka_4jxgxs.mp3"
-        }
-      ]
+    "id": 1,
+    "title": "Yuvan Shankar Raja Mix",
+    "artists": {
+      "music_directors": ["Yuvan Shankar Raja"]
     },
-    {
-      "id": 2,
-      "name": "Yuvan Shankar Raja",
-      "type": "musicdirector",
-      "image": "https://c.saavncdn.com/artists/Yuvan_Shankar_Raja_500x500.jpg",
-      "songs": [
-        {
-          "id": "ysr1",
-          "title": "Loosu Penne",
-          "movie": "Vallavan",
-          "duration": "4:20",
-          "image": "https://c.saavncdn.com/932/Vallavan-Tamil-2006-20221206012411-500x500.jpg",
-          "songUrl": "https://res.cloudinary.com/dcuto7css/video/upload/v1743267846/loose-penne_ejxgxs.mp3"
-        },
-        {
-          "id": "ysr2",
-          "title": "Ninaithu Ninaithu",
-          "movie": "7G Rainbow Colony",
-          "duration": "5:30",
-          "image": "https://i.scdn.co/image/ab67616d0000b273c5ce44741bf2ee3f9c3be353",
-          "songUrl": "https://res.cloudinary.com/dcuto7css/video/upload/v1743267846/ninaithu-ninaithu_fjxgxs.mp3"
-        },
-        {
-          "id": "ysr3",
-          "title": "Pirai Thedum",
-          "movie": "Mayakkam Enna",
-          "duration": "4:55",
-          "image": "https://c.saavncdn.com/592/Mayakkam-Enna-Tamil-2011-500x500.jpg",
-          "songUrl": "https://res.cloudinary.com/dcuto7css/video/upload/v1743267846/pirai-thedum_9jxgxs.mp3"
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Anirudh Ravichander",
-      "type": "musicdirector",
-      "image": "https://c.saavncdn.com/artists/Anirudh_Ravichander_500x500.jpg",
-      "songs": [
-        {
-          "id": "ani1",
-          "title": "Arabic Kuthu",
-          "movie": "Beast",
-          "duration": "3:45",
-          "image": "https://c.saavncdn.com/088/Beast-Tamil-2022-20220414113951-500x500.jpg",
-          "songUrl": "https://res.cloudinary.com/dcuto7css/video/upload/v1743267846/arabic-kuthu_0jxgxs.mp3"
-        },
-        {
-          "id": "ani2",
-          "title": "Vaathi Coming",
-          "movie": "Master",
-          "duration": "4:10",
-          "image": "https://c.saavncdn.com/896/Master-Tamil-2020-20210520182822-500x500.jpg",
-          "songUrl": "https://res.cloudinary.com/dcuto7css/video/upload/v1743267846/vaathi-coming_2jxgxs.mp3"
-        },
-        {
-          "id": "ani3",
-          "title": "Ordinary Person",
-          "movie": "Leo",
-          "duration": "4:25",
-          "image": "https://c.saavncdn.com/916/Ordinary-Person-From-Leo-Tamil-2023-20231023221744-500x500.jpg",
-          "songUrl": "https://res.cloudinary.com/dcuto7css/video/upload/v1743267846/ordinary-person_xjxgxs.mp3"
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Harris Jayaraj",
-      "type": "musicdirector",
-      "image": "https://c.saavncdn.com/artists/Harris_Jayaraj_500x500.jpg",
-      "songs": [
-        {
-          "id": "hj1",
-          "title": "Mundhinam Parthene",
-          "movie": "Vaaranam Aayiram",
-          "duration": "5:15",
-          "image": "https://c.saavncdn.com/779/Vaaranam-Aayiram-Tamil-2008-20221205183055-500x500.jpg",
-          "songUrl": "https://res.cloudinary.com/dcuto7css/video/upload/v1743267846/mundhinam-parthene_wjxgxs.mp3"
-        },
-        {
-          "id": "hj2",
-          "title": "Thangalaan Theme",
-          "movie": "Thangalaan",
-          "duration": "4:30",
-          "image": "https://i.ytimg.com/vi/9YhONRqyOTY/maxresdefault.jpg",
-          "songUrl": "https://res.cloudinary.com/dcuto7css/video/upload/v1743267846/thangalaan-theme_njxgxs.mp3"
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "name": "G.V. Prakash Kumar",
-      "type": "musicdirector",
-      "image": "https://c.saavncdn.com/artists/G_V__Prakash_Kumar_500x500.jpg",
-      "songs": [
-        {
-          "id": "gvp1",
-          "title": "Killer Killer",
-          "movie": "Captain Miller",
-          "duration": "4:15",
-          "image": "https://i.scdn.co/image/ab67616d0000b27386989cbed63d912e8c1355bb",
-          "songUrl": "https://res.cloudinary.com/dcuto7css/video/upload/v1743267846/killer-killer_mjxgxs.mp3"
-        },
-        {
-          "id": "gvp2",
-          "title": "Kathari Poovazhagi",
-          "movie": "Asuran",
-          "duration": "4:40",
-          "image": "https://c.saavncdn.com/667/Asuran-Tamil-2019-20191004024538-500x500.jpg",
-          "songUrl": "https://res.cloudinary.com/dcuto7css/video/upload/v1743267846/kathari-poovazhagi_bjxgxs.mp3"
-        }
-      ]
+    "media": {
+      "cover_image_url": "https://i.pinimg.com/originals/e9/7e/31/e97e317a75ab3eedcc1603fbe6d5eaf4.jpg"
     }
-  ]
+  },
+  {
+    "id": 2,
+    "title": "Veera Soora",
+    "artists": {
+      "music_directors": ["G.V. Prakash Kumar"]
+    },
+    "media": {
+      "cover_image_url": "https://i.pinimg.com/736x/f0/a6/f7/f0a6f72b9e638a652aec92c6f39d6b83.jpg"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Vallavan",
+    "artists": {
+      "music_directors": ["A.R. Rahman"]
+    },
+    "media": {
+      "cover_image_url": "https://i.pinimg.com/736x/8a/33/7e/8a337e8142145d98801ea4a5700d60fb.jpg"
+    }
+  },
+  {
+    "id": 4,
+    "title": "Yuvan Shankar Raja Mix",
+    "artists": {
+      "music_directors": ["Harris Jayaraj"]
+    },
+    "media": {
+      "cover_image_url": "https://pbs.twimg.com/ext_tw_video_thumb/1626238486180405249/pu/img/C_kcDlzR4tFBJC1N?format=jpg&name=large"
+    }
+  },
+  {
+    "id": 5,
+    "title": "Veera Soora",
+    "artists": {
+      "music_directors": ["Anirudh Ravichander"]
+    },
+    "media": {
+      "cover_image_url": "https://preview.redd.it/the-downfall-of-anirudh-v0-nvifdqri8zpd1.jpeg?width=1080&crop=smart&auto=webp&s=82b32c32c19a684eb429bd86189e81bf630349ea"
+    }
+  }
   
+]

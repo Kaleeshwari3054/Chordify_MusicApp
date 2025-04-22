@@ -119,7 +119,7 @@ body {
 }
 
 .footer-btn:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 .music-director-header {
   height: 300px;

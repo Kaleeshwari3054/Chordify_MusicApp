@@ -15,12 +15,17 @@ export default function ProfileLibrary() {
     const fetchLibrary = async () => {
       if (currentUser) {
         try {
-          const libraryRef = collection(db, "users", currentUser.uid, "library");
+          const libraryRef = collection(
+            db,
+            "users",
+            currentUser.uid,
+            "library"
+          );
           const q = query(libraryRef);
           const querySnapshot = await getDocs(q);
           const songs = querySnapshot.docs.map((doc) => ({
-            id: doc.id, // Get the document ID (song ID)
-            ...doc.data(), // Get song details
+            id: doc.id,
+            ...doc.data(),
           }));
           setSavedLibrary(songs);
         } catch (error) {
@@ -40,6 +45,19 @@ export default function ProfileLibrary() {
       console.error("Logout failed:", error);
     }
   };
+
+  if (!currentUser) {
+    return (
+      <div className="profile-container">
+        <div className="profile-box">
+          <h2>Profile & Library</h2>
+          <p>
+            Please <Link to="/login">log in</Link> to see your profile.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="profile-container">
@@ -66,18 +84,28 @@ export default function ProfileLibrary() {
           {selectedCategory === "User Profile" && (
             <div className="user-info">
               <h3>User Profile</h3>
-              {currentUser ? (
-                <>
-                  <div className="profile-avatar">
-                    <img src={currentUser.photoURL || "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="} alt="User" />
-                  </div>
-                  <p><strong>Username:</strong> {currentUser.displayName || "Unknown"}</p>
-                  <p><strong>Email:</strong> {currentUser.email}</p>
-                  <button className="logout-btn" onClick={handleLogout}>Log out</button>
-                </>
-              ) : (
-                <p>Please <Link to="/login">log in</Link> to see your profile.</p>
-              )}
+              <div className="profile-avatar">
+                <img
+                  src={
+                    currentUser?.photoURL
+                      ? currentUser.photoURL
+                      : "https://w0.peakpx.com/wallpaper/119/566/HD-wallpaper-ek-dhanush-ke-art-work-dhanush-indian-actor.jpg"
+                  }
+                  alt="User"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+
+              <p className="user-name">
+                <strong>Username:</strong>{" "}
+                {currentUser.displayName || "Unknown"}
+              </p>
+              <p>
+                <strong>Email:</strong> {currentUser.email}
+              </p>
+              <button className="logout-btn" onClick={handleLogout}>
+                Log out
+              </button>
             </div>
           )}
 
@@ -88,9 +116,12 @@ export default function ProfileLibrary() {
                 <ul>
                   {savedLibrary.map((song) => (
                     <li key={song.id} className="library-item">
-                      <p><strong>Song:</strong> {song.songTitle}</p>
-                      <p><strong>Artist:</strong> {song.artist}</p>
-                      {/* ✅ Corrected Navigation */}
+                      <p>
+                        <strong>Song:</strong> {song.songTitle}
+                      </p>
+                      <p>
+                        <strong>Artist:</strong> {song.artist}
+                      </p>
                       <Link to={`/recent-details/${song.id}`}>
                         View Details
                       </Link>
@@ -104,7 +135,9 @@ export default function ProfileLibrary() {
           )}
         </div>
 
-        <Link to="/" className="back-btn">Back to Home</Link>
+        <Link to="/" className="back-btn">
+          Back to Home
+        </Link>
       </div>
     </div>
   );

@@ -7,31 +7,33 @@ import ArtistDetails from "./components/ArtistDetails";
 import ProfilePage from "./components/ProfilePage";
 import ProfileLibrary from "./components/ArtistPage";
 import MusicDirectorDetails from "./MusicDirectorDetails";
+import TamilSongs from "./Routing/TamilSongs";
+import HindiSongs from "./Routing/HindiSongs";
+import EnglishSongs from "./Routing/EnglishSongs";
 import Signup from "./Signup";
 import Login from "./Login";
 
 const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/artist-details/:artistName" element={<ArtistDetails />} />
-        <Route path="/profile" element={<ProfilePage />}>
-          <Route path="library" element={<ProfileLibrary />} />
-        </Route>
-        <Route
-          path="/music-director/:name"
-          element={<MusicDirectorDetails />}
-        />
-        <Route path="/musicdirector/:id" element={<MusicDirectorDetails />} />
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/artist-details/:artistName" element={<ArtistDetails />} />
+      {/* <Route path="/profile/library" element={<ProfileLibrary />} /> */}
+      <Route path="/profile" element={<ProfileLibrary />} />
 
-        <Route path="/recent-details" element={<RecentDetails />} />
-        <Route path="/all-artists" element={<AllArtist />} />
-      </Routes>
-    </Router>
+      <Route path="/music-director/:name" element={<MusicDirectorDetails />} />
+      <Route path="/musicdirector/:id" element={<MusicDirectorDetails />} />
+      <Route path="/recent-details" element={<RecentDetails />} />
+      <Route path="/all-artists" element={<AllArtist />} />
+      <Route path="/tamilsongs" element={<TamilSongs />} />
+      <Route path="/englishsongs" element={<EnglishSongs />} />
+      <Route path="/hindhisongs" element={<HindiSongs />} />
+    </Routes>
+  </Router>
   );
 };
 

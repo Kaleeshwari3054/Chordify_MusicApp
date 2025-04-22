@@ -9,6 +9,13 @@
   height: 100vh;
 }
 
+.error {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.8rem;
+}
+
 .auth-box {
   background: white;
   padding: 2rem;
@@ -105,9 +112,9 @@ a {
   font-weight: bold;
 }
 
-a:hover {
+/* a:hover {
   text-decoration: underline;
-}
+} */
 
 .error {
   color: #ff4747;

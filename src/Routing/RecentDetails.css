@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #ffffff;
+  color: #1db954;
+}
+
+.recent-details-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 40px;
+  background: #f9f9f9;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+  text-align: center;
+}
+
+.Tittlee {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #1db954;
+  border-bottom: 3px solid #1db954;
+  display: inline-block;
+  margin-top: 30px;
+}
+
+/* Center the image */
+.recent-details-container img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  margin: 0 auto 40px auto;
+  display: block;
+}
+
+/* Layout: Album+Artist left | Stats right */
+.details-flex {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  text-align: left;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* Left column */
+.left-section {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Right column */
+.right-section {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Section headings */
+.left-section h3,
+.right-section h3 {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #1db954;
+  border-left: 5px solid #1db954;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+/* Paragraph styling */
+.left-section p,
+.right-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 8px 0;
+  color: #333;
+}
+
+.left-section p strong,
+.right-section p strong {
+  color: #1db954;
+}
+
+.left-section p:hover,
+.right-section p:hover {
+  background-color: #e9f7ee;
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+/* Song audio player */
+.song-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.song-section audio {
+  width: 90%;
+  max-width: 600px;
+  border-radius: 10px;
+  outline: none;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive for mobile */
+@media screen and (max-width: 768px) {
+  .details-flex {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .recent-details-container h2,
+  .Tittlee {
+    font-size: 2rem;
+  }
+
+  .left-section h3,
+  .right-section h3 {
+    font-size: 1.3rem;
+  }
+
+  .recent-details-container img {
+    width: 90%;
+    height: auto;
+    margin: 0 auto 30px auto;
+  }
+}

@@ -1,99 +1,177 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../components/AuthContext";
-import { db } from "../firebase";
-import { doc, setDoc, collection, getDoc, deleteDoc } from "firebase/firestore";
-import "./Routing.css";
+import React, { useEffect, useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
+import songData from "../components/Recent/RecentDetail.json";
+import musicDirectorsData from "../components/musicDirectors.json";
+import { addToPlaylist } from "../AddToPlaylist"; // adjust path
+import { auth } from "../firebase";
+import "./RecentDetails.css";
 
 const RecentDetails = () => {
   const location = useLocation();
-  const navigate = useNavigate();
-  const { currentUser } = useAuth();
+  const songId = location.state?.songId;
+
+  const song = songData.find((item) => item.id === songId);
+  const [playingIndex, setPlayingIndex] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isSaved, setIsSaved] = useState(false);
-  const audioRef = useRef(null);
+  const [likedSongs, setLikedSongs] = useState(() => {
+    const savedLikes = localStorage.getItem("likedSongs");
+    return savedLikes ? JSON.parse(savedLikes) : [];
+  });
 
-  const music = location.state?.music;
-
-  // ✅ Always run the hook outside any condition
-  useEffect(() => {
-    const checkLibrary = async () => {
-      if (currentUser && music?.id) {
-        const songRef = doc(db, "users", currentUser.uid, "library", String(music.id));
-        const songSnap = await getDoc(songRef);
-        setIsSaved(songSnap.exists());
-      }
-    };
-    checkLibrary();
-  }, [currentUser, music]);
-
-  // ❌ If music data not available, return early
-  if (!music) {
-    return <p className="error-message">Error: No song data available.</p>;
-  }
-
-  const handlePlayPause = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-    setIsPlaying(!isPlaying);
-  };
-
-  const toggleLibrary = async () => {
-    if (!currentUser) {
-      alert("Please log in.");
+  const handleAddToLibrary = async () => {
+    const user = auth.currentUser;
+    if (!user) {
+      alert("Login required!");
       return;
     }
+    console.log(handleAddToLibrary);
 
-    const songRef = doc(db, "users", currentUser.uid, "library", String(music.id));
-
-    if (isSaved) {
-      await deleteDoc(songRef);
-      alert("Removed from library.");
-    } else {
-      await setDoc(songRef, {
-        songTitle: music.songTitle || "Unknown Title",
-        artist: music.artist || "Unknown Artist",
-        songUrl: music.songUrl || "",
-        songImage: music.songimage || "",
-      });
-      alert("Added to library.");
-    }
-    setIsSaved(!isSaved);
+    await addToPlaylist(user.uid, "liked", song); // "liked" or "watchLater"
   };
 
+  const audioRefs = useRef([]);
+  const currentlyPlayingRef = useRef(null);
+
+  const [director, setDirector] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem("likedSongs", JSON.stringify(likedSongs));
+  }, [likedSongs]);
+
+  useEffect(() => {
+    if (song) {
+      const foundDirector = musicDirectorsData.find((item) =>
+        song.artists.music_directors.includes(item.name)
+      );
+      setDirector(foundDirector);
+    }
+  }, [song]);
+
+  const toggleLike = (songId) => {
+    if (likedSongs.includes(songId)) {
+      setLikedSongs(likedSongs.filter((id) => id !== songId));
+    } else {
+      setLikedSongs([...likedSongs, songId]);
+    }
+  };
+
+  const handlePlay = (index) => {
+    const audio = audioRefs.current[index];
+
+    if (currentlyPlayingRef.current && currentlyPlayingRef.current !== audio) {
+      currentlyPlayingRef.current.pause();
+    }
+
+    if (currentlyPlayingRef.current === audio) {
+      if (audio.paused) {
+        audio.play();
+        setIsPlaying(true);
+      } else {
+        audio.pause();
+        setIsPlaying(false);
+      }
+    } else {
+      currentlyPlayingRef.current = audio;
+      audio.play();
+      setIsPlaying(true);
+    }
+
+    setPlayingIndex(index);
+  };
+
+  const addToLibrary = (song) => {
+    const saved = localStorage.getItem("savedLibrary");
+    const existing = saved ? JSON.parse(saved) : [];
+    const updated = [...existing, song];
+    localStorage.setItem("savedLibrary", JSON.stringify(updated));
+    alert("Song saved to library!");
+  };
+
+  if (!song) return <div>Song not found</div>;
+
   return (
-    <div className="recent-details-page">
-      <h1 className="Heading">Song Details</h1>
+    <div className="recent-details-container">
+      <h2 className="Tittlee">{song.title}</h2>
+      <img src={song.media.cover_image_url} alt={song.title} />
 
-      <header className="playlist-header">
-        <div className="playlist-info">
-          <img src={music.songimage} alt="Playlist" className="playlist-image" />
-          <div className="playlist-details">
-            <h1 className="playlist-title">This is {music.artist}</h1>
-            <p className="playlist-description">The essential tracks, all in one playlist.</p>
-            <div className="playlist-actions">
-              <button className="play-button" onClick={handlePlayPause}>
-                {isPlaying ? "⏸ Pause" : "▶▶▶ Play"}
-              </button>
-              <button className="save-button" onClick={toggleLibrary}>
-                {isSaved ? "− Remove from Library" : "+ Save to Library"}
-              </button>
-            </div>
-          </div>
+      <div className="details-flex">
+        <div className="left-section">
+          <h3>Album & Movie Info</h3>
+          <p>
+            <strong>Album:</strong> {song.album.name} ({song.album.release_year}
+            )
+          </p>
+          <p>
+            <strong>Movie:</strong> {song.movie.title}
+          </p>
+          <p>
+            <strong>Director:</strong> {song.movie.director}
+          </p>
+          <p>
+            <strong>Producers:</strong> {song.movie.producers.join(", ")}
+          </p>
+
+          <h3>Artists</h3>
+          <p>
+            <strong>Singers:</strong> {song.artists.singers.join(", ")}
+          </p>
+          <p>
+            <strong>Music Directors:</strong>{" "}
+            {song.artists.music_directors.join(", ")}
+          </p>
+          <p>
+            <strong>Lyricists:</strong> {song.artists.lyricists.join(", ")}
+          </p>
         </div>
-      </header>
 
-      <audio ref={audioRef} src={music.songUrl}></audio>
+        <div className="right-section">
+          <h3>Status</h3>
+          <p>
+            <strong>Language:</strong> {song.language}
+          </p>
+          <p>
+            <strong>Duration:</strong> {song.duration} seconds
+          </p>
+          <p>
+            <strong>Release Date:</strong> {song.release_date}
+          </p>
+          <p>
+            <strong>Genre:</strong> {song.genre.join(", ")}
+          </p>
+          <p>
+            <strong>Likes:</strong> {song.metadata.likes.toLocaleString()}
+          </p>
+          <p>
+            <strong>Plays:</strong> {song.metadata.plays.toLocaleString()}
+          </p>
+        </div>
+      </div>
 
-      <footer className="footer-details">
-        <button onClick={() => navigate(-1)} className="footer-btn">
-          Back
+      <div className="btn-group">
+        <button className="play-btn" onClick={() => handlePlay(0)}>
+          {playingIndex === 0 && isPlaying ? "⏸ Pause" : "▶️ Play"}
         </button>
-      </footer>
+
+        <button className="like-btn" onClick={() => toggleLike(song.id)}>
+          {likedSongs.includes(song.id) ? "💔 Unlike" : "❤️ Like"}
+        </button>
+
+        {/* <button className="save-button" onClick={() => addToLibrary(song)}>
+          + Save to Library
+        </button> */}
+
+        <button onClick={handleAddToLibrary}>+ Save to Liked</button>
+      </div>
+
+      <div className="song-section">
+        <audio
+          ref={(el) => (audioRefs.current[0] = el)}
+          controls
+          src={song.media.audio_url}
+        />
+      </div>
     </div>
   );
 };
+
 export default RecentDetails;
